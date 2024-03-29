@@ -138,8 +138,7 @@ class TeaCore:
         ) as s:
             body = b''
             if isinstance(request.body, BaseStream):
-                for content in request.body:
-                    body += content
+                body = request.body.read()
             elif isinstance(request.body, str):
                 body = request.body.encode('utf-8')
             else:
